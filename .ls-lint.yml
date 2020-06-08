@@ -1,0 +1,13 @@
+ls:
+  .tf: kebab-case
+
+ignore:
+  - coverage
+  - .circleci
+  - .eslintrc.json
+  - .git
+  - .github
+  - .manage_modules
+  - .vscode
+  - lib
+  - node_modules
