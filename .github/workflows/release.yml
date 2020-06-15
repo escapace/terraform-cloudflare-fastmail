@@ -1,13 +1,11 @@
 name: Release
 on:
-  # Trigger the workflow on push or pull request,
-  # but only for the master branch
   push:
     branches:
-      - master
+      - trunk
   pull_request:
     branches:
-      - master
+      - trunk
 jobs:
   reelase:
     name: Release
