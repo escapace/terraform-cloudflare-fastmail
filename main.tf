@@ -109,6 +109,7 @@ resource "cloudflare_record" "caldav" {
   ttl     = "300"
 
   data = {
+    name     = "terraform-caldav"
     proto    = "_tcp"
     service  = "_caldav"
     priority = 0
@@ -130,6 +131,7 @@ resource "cloudflare_record" "caldavs" {
   ttl     = "300"
 
   data = {
+    name     = "terraform-caldavs"
     proto    = "_tcp"
     service  = "_caldavs"
     priority = 0
@@ -151,6 +153,7 @@ resource "cloudflare_record" "carddav" {
   ttl     = "300"
 
   data = {
+    name     = "terraform-carddav"
     proto    = "_tcp"
     service  = "_carddav"
     priority = 0
@@ -172,6 +175,7 @@ resource "cloudflare_record" "carddavs" {
   ttl     = "300"
 
   data = {
+    name     = "terraform-carddavs"
     proto    = "_tcp"
     service  = "_carddavs"
     priority = 0
@@ -193,6 +197,7 @@ resource "cloudflare_record" "imap" {
   ttl     = "300"
 
   data = {
+    name     = "terraform-imap"
     proto    = "_tcp"
     service  = "_imap"
     priority = 0
@@ -214,6 +219,7 @@ resource "cloudflare_record" "imaps" {
   ttl     = "300"
 
   data = {
+    name     = "terraform-imaps"
     proto    = "_tcp"
     service  = "_imaps"
     priority = 0
@@ -235,6 +241,7 @@ resource "cloudflare_record" "pop3" {
   ttl     = "300"
 
   data = {
+    name     = "terraform-pop"
     proto    = "_tcp"
     service  = "_pop3"
     priority = 0
@@ -256,6 +263,7 @@ resource "cloudflare_record" "pop3s" {
   ttl     = "300"
 
   data = {
+    name     = "terraform-pops"
     proto    = "_tcp"
     service  = "_pop3s"
     priority = 10
@@ -277,6 +285,7 @@ resource "cloudflare_record" "jmap" {
   ttl     = "300"
 
   data = {
+    name     = "terraform-jmap"
     proto    = "_tcp"
     service  = "_jmap"
     priority = 0
@@ -298,6 +307,7 @@ resource "cloudflare_record" "submission" {
   ttl     = "300"
 
   data = {
+    name     = "terraform-submission"
     proto    = "_tcp"
     service  = "_submission"
     priority = 0
