@@ -101,6 +101,27 @@ resource "cloudflare_record" "fm3_domainkey" {
   }
 }
 
+resource "cloudflare_record" "caldav" {
+  count   = var.enabled ? 1 : 0
+  zone_id = local.zone_id
+  name    = var.domain
+  type    = "SRV"
+  ttl     = "300"
+
+  data = {
+    proto    = "_tcp"
+    service  = "_caldav"
+    priority = 0
+    weight   = 0
+    port     = 0
+    target   = "."
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
 resource "cloudflare_record" "caldavs" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
@@ -122,7 +143,7 @@ resource "cloudflare_record" "caldavs" {
   }
 }
 
-resource "cloudflare_record" "pop3s" {
+resource "cloudflare_record" "carddav" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = var.domain
@@ -131,11 +152,11 @@ resource "cloudflare_record" "pop3s" {
 
   data = {
     proto    = "_tcp"
-    service  = "_pop3s"
-    priority = 10
-    weight   = 1
-    port     = 995
-    target   = "pop.fastmail.com"
+    service  = "_carddav"
+    priority = 0
+    weight   = 0
+    port     = 0
+    target   = "."
   }
 
   lifecycle {
@@ -164,6 +185,27 @@ resource "cloudflare_record" "carddavs" {
   }
 }
 
+resource "cloudflare_record" "imap" {
+  count   = var.enabled ? 1 : 0
+  zone_id = local.zone_id
+  name    = var.domain
+  type    = "SRV"
+  ttl     = "300"
+
+  data = {
+    proto    = "_tcp"
+    service  = "_imap"
+    priority = 0
+    weight   = 0
+    port     = 0
+    target   = "."
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
 resource "cloudflare_record" "imaps" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
@@ -178,6 +220,69 @@ resource "cloudflare_record" "imaps" {
     weight   = 1
     port     = 993
     target   = "imap.fastmail.com"
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "cloudflare_record" "pop3" {
+  count   = var.enabled ? 1 : 0
+  zone_id = local.zone_id
+  name    = var.domain
+  type    = "SRV"
+  ttl     = "300"
+
+  data = {
+    proto    = "_tcp"
+    service  = "_pop3"
+    priority = 0
+    weight   = 0
+    port     = 0
+    target   = "."
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "cloudflare_record" "pop3s" {
+  count   = var.enabled ? 1 : 0
+  zone_id = local.zone_id
+  name    = var.domain
+  type    = "SRV"
+  ttl     = "300"
+
+  data = {
+    proto    = "_tcp"
+    service  = "_pop3s"
+    priority = 10
+    weight   = 1
+    port     = 995
+    target   = "pop.fastmail.com"
+  }
+
+  lifecycle {
+    create_before_destroy = true
+  }
+}
+
+resource "cloudflare_record" "jmap" {
+  count   = var.enabled ? 1 : 0
+  zone_id = local.zone_id
+  name    = var.domain
+  type    = "SRV"
+  ttl     = "300"
+
+  data = {
+    proto    = "_tcp"
+    service  = "_jmap"
+    priority = 0
+    weight   = 1
+    port     = 443
+    target   = "jmap.fastmail.com"
   }
 
   lifecycle {
