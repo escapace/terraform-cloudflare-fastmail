@@ -2,14 +2,14 @@
 
 | Name | Version |
 |------|---------|
-| terraform | >= 0.12 |
-| cloudflare | >= 2.4.0 |
+| terraform | >= 0.13 |
+| cloudflare | 2.18.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| cloudflare | >= 2.4.0 |
+| cloudflare | 2.18.0 |
 
 ## Inputs
 
