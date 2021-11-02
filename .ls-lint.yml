@@ -2,12 +2,8 @@ ls:
   .tf: kebab-case
 
 ignore:
-  - coverage
-  - .circleci
-  - .eslintrc.json
   - .git
   - .github
-  - .manage_modules
+  - .husky
   - .vscode
-  - lib
   - node_modules

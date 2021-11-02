@@ -49,18 +49,18 @@ resource "cloudflare_record" "spf_txt" {
   }
 }
 
-resource "cloudflare_record" "spf_spf" {
-  count   = var.enabled ? 1 : 0
-  zone_id = local.zone_id
-  name    = var.domain
-  type    = "SPF"
-  ttl     = "300"
-  value   = "v=spf1 ${join(" ", var.spf_include)} ?all"
-
-  lifecycle {
-    create_before_destroy = true
-  }
-}
+# resource "cloudflare_record" "spf_spf" {
+#   count   = var.enabled ? 1 : 0
+#   zone_id = local.zone_id
+#   name    = var.domain
+#   type    = "SPF"
+#   ttl     = "300"
+#   value   = "v=spf1 ${join(" ", var.spf_include)} ?all"
+#
+#   lifecycle {
+#     create_before_destroy = true
+#   }
+# }
 
 resource "cloudflare_record" "fm1_domainkey" {
   count   = var.enabled ? 1 : 0
@@ -108,7 +108,7 @@ resource "cloudflare_record" "caldav" {
   type    = "SRV"
   ttl     = "300"
 
-  data = {
+  data {
     name     = "terraform-caldav"
     proto    = "_tcp"
     service  = "_caldav"
@@ -130,7 +130,7 @@ resource "cloudflare_record" "caldavs" {
   type    = "SRV"
   ttl     = "300"
 
-  data = {
+  data {
     name     = "terraform-caldavs"
     proto    = "_tcp"
     service  = "_caldavs"
@@ -152,7 +152,7 @@ resource "cloudflare_record" "carddav" {
   type    = "SRV"
   ttl     = "300"
 
-  data = {
+  data {
     name     = "terraform-carddav"
     proto    = "_tcp"
     service  = "_carddav"
@@ -174,7 +174,7 @@ resource "cloudflare_record" "carddavs" {
   type    = "SRV"
   ttl     = "300"
 
-  data = {
+  data {
     name     = "terraform-carddavs"
     proto    = "_tcp"
     service  = "_carddavs"
@@ -196,7 +196,7 @@ resource "cloudflare_record" "imap" {
   type    = "SRV"
   ttl     = "300"
 
-  data = {
+  data {
     name     = "terraform-imap"
     proto    = "_tcp"
     service  = "_imap"
@@ -218,7 +218,7 @@ resource "cloudflare_record" "imaps" {
   type    = "SRV"
   ttl     = "300"
 
-  data = {
+  data {
     name     = "terraform-imaps"
     proto    = "_tcp"
     service  = "_imaps"
@@ -240,7 +240,7 @@ resource "cloudflare_record" "pop3" {
   type    = "SRV"
   ttl     = "300"
 
-  data = {
+  data {
     name     = "terraform-pop"
     proto    = "_tcp"
     service  = "_pop3"
@@ -262,7 +262,7 @@ resource "cloudflare_record" "pop3s" {
   type    = "SRV"
   ttl     = "300"
 
-  data = {
+  data {
     name     = "terraform-pops"
     proto    = "_tcp"
     service  = "_pop3s"
@@ -284,7 +284,7 @@ resource "cloudflare_record" "jmap" {
   type    = "SRV"
   ttl     = "300"
 
-  data = {
+  data {
     name     = "terraform-jmap"
     proto    = "_tcp"
     service  = "_jmap"
@@ -306,7 +306,7 @@ resource "cloudflare_record" "submission" {
   type    = "SRV"
   ttl     = "300"
 
-  data = {
+  data {
     name     = "terraform-submission"
     proto    = "_tcp"
     service  = "_submission"

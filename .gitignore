@@ -1,6 +1,10 @@
+/example/.terraform.lock.hcl
+/bin/archiver-binary
+archives/*
+!archives/.gitkeep
+
 #  Local .terraform directories
 **/.terraform/*
-**/.terraform.lock.hcl
 
 # .tfstate files
 *.tfstate

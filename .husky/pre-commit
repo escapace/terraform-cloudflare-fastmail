@@ -1,0 +1,16 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+set -euo pipefail
+
+pnpm exec ls-lint || exit 1
+terraform validate || exit 1
+terraform fmt -write || exit 1
+terraform-docs markdown ./ > README.md || exit 1
+
+terraform providers lock \
+  -platform=linux_arm64 \
+  -platform=linux_amd64 \
+  -platform=darwin_amd64 \
+  -platform=windows_amd64 || exit 1
+
+git add -u
