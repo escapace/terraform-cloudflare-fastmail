@@ -9,7 +9,7 @@
     "@ls-lint/ls-lint": "1.10.0",
     "husky": "7.0.4",
     "is-ci": "^3.0.1",
-    "semantic-release": "18.0.0"
+    "semantic-release": "19.0.3"
   },
   "license": "Apache-2.0",
   "private": true,
