@@ -12,6 +12,7 @@ variable "spf_include" {
 }
 
 variable "enabled" {
-  type    = bool
-  default = true
+  type        = bool
+  description = "Whether this module is enabled"
+  default     = true
 }
