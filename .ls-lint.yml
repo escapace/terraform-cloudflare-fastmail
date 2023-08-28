@@ -1,9 +1,23 @@
 ls:
+  .auto.tfvars: kebab-case
+  .json: kebab-case
   .tf: kebab-case
+  .tfvars: kebab-case
+  .yaml: kebab-case
+  .yml: kebab-case
 
 ignore:
-  - .git
-  - .github
-  - .husky
-  - .vscode
-  - node_modules
+  - '**/.git'
+  - '**/.pnpm'
+  - '**/.terraform'
+  - '**/.tfsec'
+  - '**/node_modules'
+  - '**/.commitlintrc.json'
+  - '**/.eslintrc.json'
+  - '**/.lintstagedrc-*.json'
+  - '**/.lintstagedrc.json'
+  - '**/.lintstagedrc-*.js'
+  - '**/.lintstagedrc.js'
+  - '**/.ls-lint.yml'
+  - '**/.prettierrc.json'
+  - '**/.terraform-docs.yaml'

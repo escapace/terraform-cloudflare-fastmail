@@ -1,16 +1,21 @@
-#!/bin/sh
+#!/usr/bin/env bash
 . "$(dirname "$0")/_/husky.sh"
-set -euo pipefail
 
-pnpm exec ls-lint || exit 1
-terraform validate || exit 1
-terraform fmt -write || exit 1
-terraform-docs markdown ./ > README.md || exit 1
+set -e
+set -u
+set -o pipefail
 
-terraform providers lock \
-  -platform=linux_arm64 \
-  -platform=linux_amd64 \
-  -platform=darwin_amd64 \
-  -platform=windows_amd64 || exit 1
+diff_before="$(git diff --no-ext-diff --no-textconv --ignore-submodules | base64)"
 
-git add -u
+pnpm install --ignore-scripts
+git add package.json
+
+pnpm run typecheck
+pnpm exec lint-staged
+
+diff_after="$(git diff --no-ext-diff --no-textconv --ignore-submodules | base64)"
+
+if [[ "${diff_before}" != "${diff_after}" ]]; then
+  echo "files were modified by the pre-commit hook"
+  exit 1
+fi

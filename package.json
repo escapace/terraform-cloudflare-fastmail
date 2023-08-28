@@ -1,20 +1,22 @@
 {
-  "name": "terraform-module",
-  "description": "",
+  "name": "@terraform/cloudflare-fastmail",
   "version": "0.0.0",
-  "author": "escapace <opensource@escapace.com>",
   "devDependencies": {
-    "@commitlint/cli": "17.6.7",
-    "@commitlint/config-conventional": "17.6.7",
-    "@ls-lint/ls-lint": "2.0.1",
+    "@commitlint/cli": "17.7.1",
+    "@ls-lint/ls-lint": "v2.1.0-beta.0",
     "husky": "8.0.3",
-    "is-ci": "^3.0.1",
-    "semantic-release": "21.0.7"
+    "is-ci": "3.0.1",
+    "lint-staged": "14.0.1",
+    "prettier": "3.0.2",
+    "prettier-config-escapace": "1.0.6"
   },
-  "license": "Apache-2.0",
   "private": true,
   "scripts": {
-    "preinstall": "npx only-allow pnpm",
-    "prepare": "is-ci || husky install"
-  }
+    "docs": "terraform-docs . && prettier --write README.md",
+    "lint": "ls-lint && terraform fmt && tflint --chdir . && tfsec .",
+    "lint-staged": "lint-staged",
+    "prepare": "terraform init -backend=false && tflint --init && (is-ci || husky install)",
+    "typecheck": "terraform validate"
+  },
+  "type": "module"
 }
