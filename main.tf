@@ -109,7 +109,7 @@ resource "cloudflare_record" "caldav" {
   ttl     = 300
 
   data {
-    name     = "terraform-caldav"
+    name     = "terraform-caldav.${var.domain}"
     proto    = "_tcp"
     service  = "_caldav"
     priority = 0
@@ -131,7 +131,7 @@ resource "cloudflare_record" "caldavs" {
   ttl     = 300
 
   data {
-    name     = "terraform-caldavs"
+    name     = "terraform-caldavs.${var.domain}"
     proto    = "_tcp"
     service  = "_caldavs"
     priority = 0
@@ -153,7 +153,7 @@ resource "cloudflare_record" "carddav" {
   ttl     = 300
 
   data {
-    name     = "terraform-carddav"
+    name     = "terraform-carddav.${var.domain}"
     proto    = "_tcp"
     service  = "_carddav"
     priority = 0
@@ -175,7 +175,7 @@ resource "cloudflare_record" "carddavs" {
   ttl     = 300
 
   data {
-    name     = "terraform-carddavs"
+    name     = "terraform-carddavs.${var.domain}"
     proto    = "_tcp"
     service  = "_carddavs"
     priority = 0
@@ -197,7 +197,7 @@ resource "cloudflare_record" "imap" {
   ttl     = 300
 
   data {
-    name     = "terraform-imap"
+    name     = "terraform-imap.${var.domain}"
     proto    = "_tcp"
     service  = "_imap"
     priority = 0
@@ -219,7 +219,7 @@ resource "cloudflare_record" "imaps" {
   ttl     = 300
 
   data {
-    name     = "terraform-imaps"
+    name     = "terraform-imaps.${var.domain}"
     proto    = "_tcp"
     service  = "_imaps"
     priority = 0
@@ -241,7 +241,7 @@ resource "cloudflare_record" "pop3" {
   ttl     = 300
 
   data {
-    name     = "terraform-pop"
+    name     = "terraform-pop.${var.domain}"
     proto    = "_tcp"
     service  = "_pop3"
     priority = 0
@@ -263,7 +263,7 @@ resource "cloudflare_record" "pop3s" {
   ttl     = 300
 
   data {
-    name     = "terraform-pops"
+    name     = "terraform-pops.${var.domain}"
     proto    = "_tcp"
     service  = "_pop3s"
     priority = 10
@@ -285,7 +285,7 @@ resource "cloudflare_record" "jmap" {
   ttl     = 300
 
   data {
-    name     = "terraform-jmap"
+    name     = "terraform-jmap.${var.domain}"
     proto    = "_tcp"
     service  = "_jmap"
     priority = 0
@@ -307,7 +307,7 @@ resource "cloudflare_record" "submission" {
   ttl     = 300
 
   data {
-    name     = "terraform-submission"
+    name     = "terraform-submission.${var.domain}"
     proto    = "_tcp"
     service  = "_submission"
     priority = 0
