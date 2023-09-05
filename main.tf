@@ -13,7 +13,7 @@ resource "cloudflare_record" "mx_record10" {
   zone_id  = local.zone_id
   name     = var.domain
   type     = "MX"
-  ttl      = "300"
+  ttl      = 300
   value    = "in1-smtp.messagingengine.com"
   priority = 10
 
@@ -27,7 +27,7 @@ resource "cloudflare_record" "mx_record20" {
   zone_id  = local.zone_id
   name     = var.domain
   type     = "MX"
-  ttl      = "300"
+  ttl      = 300
   value    = "in2-smtp.messagingengine.com"
   priority = 20
 
@@ -41,7 +41,7 @@ resource "cloudflare_record" "spf_txt" {
   zone_id = local.zone_id
   name    = var.domain
   type    = "TXT"
-  ttl     = "300"
+  ttl     = 300
   value   = "v=spf1 ${join(" ", var.spf_include)} ?all"
 
   lifecycle {
@@ -54,7 +54,7 @@ resource "cloudflare_record" "spf_txt" {
 #   zone_id = local.zone_id
 #   name    = var.domain
 #   type    = "SPF"
-#   ttl     = "300"
+#   ttl     = 300
 #   value   = "v=spf1 ${join(" ", var.spf_include)} ?all"
 #
 #   lifecycle {
@@ -67,7 +67,7 @@ resource "cloudflare_record" "fm1_domainkey" {
   zone_id = local.zone_id
   name    = "fm1._domainkey"
   type    = "CNAME"
-  ttl     = "300"
+  ttl     = 300
   value   = "fm1.${var.domain}.dkim.fmhosted.com"
 
   lifecycle {
@@ -80,7 +80,7 @@ resource "cloudflare_record" "fm2_domainkey" {
   zone_id = local.zone_id
   name    = "fm2._domainkey"
   type    = "CNAME"
-  ttl     = "300"
+  ttl     = 300
   value   = "fm2.${var.domain}.dkim.fmhosted.com"
 
   lifecycle {
@@ -93,7 +93,7 @@ resource "cloudflare_record" "fm3_domainkey" {
   zone_id = local.zone_id
   name    = "fm3._domainkey"
   type    = "CNAME"
-  ttl     = "300"
+  ttl     = 300
   value   = "fm3.${var.domain}.dkim.fmhosted.com"
 
   lifecycle {
@@ -106,7 +106,7 @@ resource "cloudflare_record" "caldav" {
   zone_id = local.zone_id
   name    = var.domain
   type    = "SRV"
-  ttl     = "300"
+  ttl     = 300
 
   data {
     name     = "terraform-caldav"
@@ -128,7 +128,7 @@ resource "cloudflare_record" "caldavs" {
   zone_id = local.zone_id
   name    = var.domain
   type    = "SRV"
-  ttl     = "300"
+  ttl     = 300
 
   data {
     name     = "terraform-caldavs"
@@ -150,7 +150,7 @@ resource "cloudflare_record" "carddav" {
   zone_id = local.zone_id
   name    = var.domain
   type    = "SRV"
-  ttl     = "300"
+  ttl     = 300
 
   data {
     name     = "terraform-carddav"
@@ -172,7 +172,7 @@ resource "cloudflare_record" "carddavs" {
   zone_id = local.zone_id
   name    = var.domain
   type    = "SRV"
-  ttl     = "300"
+  ttl     = 300
 
   data {
     name     = "terraform-carddavs"
@@ -194,7 +194,7 @@ resource "cloudflare_record" "imap" {
   zone_id = local.zone_id
   name    = var.domain
   type    = "SRV"
-  ttl     = "300"
+  ttl     = 300
 
   data {
     name     = "terraform-imap"
@@ -216,7 +216,7 @@ resource "cloudflare_record" "imaps" {
   zone_id = local.zone_id
   name    = var.domain
   type    = "SRV"
-  ttl     = "300"
+  ttl     = 300
 
   data {
     name     = "terraform-imaps"
@@ -238,7 +238,7 @@ resource "cloudflare_record" "pop3" {
   zone_id = local.zone_id
   name    = var.domain
   type    = "SRV"
-  ttl     = "300"
+  ttl     = 300
 
   data {
     name     = "terraform-pop"
@@ -260,7 +260,7 @@ resource "cloudflare_record" "pop3s" {
   zone_id = local.zone_id
   name    = var.domain
   type    = "SRV"
-  ttl     = "300"
+  ttl     = 300
 
   data {
     name     = "terraform-pops"
@@ -282,7 +282,7 @@ resource "cloudflare_record" "jmap" {
   zone_id = local.zone_id
   name    = var.domain
   type    = "SRV"
-  ttl     = "300"
+  ttl     = 300
 
   data {
     name     = "terraform-jmap"
@@ -304,7 +304,7 @@ resource "cloudflare_record" "submission" {
   zone_id = local.zone_id
   name    = var.domain
   type    = "SRV"
-  ttl     = "300"
+  ttl     = 300
 
   data {
     name     = "terraform-submission"
