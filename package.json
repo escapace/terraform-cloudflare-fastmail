@@ -13,9 +13,10 @@
   "private": true,
   "scripts": {
     "docs": "terraform-docs . && prettier --write README.md",
+    "init": "terraform init -backend=false && tflint --init && (is-ci || husky install)",
     "lint": "ls-lint && terraform fmt && tflint --chdir . && tfsec .",
     "lint-staged": "lint-staged",
-    "prepare": "terraform init -backend=false && tflint --init && (is-ci || husky install)",
+    "prepare": "is-ci || husky install",
     "typecheck": "terraform validate"
   },
   "type": "module"
