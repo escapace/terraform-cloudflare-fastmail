@@ -17,6 +17,7 @@ ignore:
   - '**/.ls-lint.yml'
   - '**/.pnpm'
   - '**/.prettierrc.json'
+  - '**/.sops.yaml'
   - '**/.syncpackrc.json'
   - '**/.terraform'
   - '**/.terraform-docs.yaml'
