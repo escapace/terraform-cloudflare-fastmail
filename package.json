@@ -2,18 +2,18 @@
   "name": "@terraform/cloudflare-fastmail",
   "version": "0.0.0",
   "devDependencies": {
-    "@commitlint/cli": "17.7.1",
-    "@ls-lint/ls-lint": "v2.1.0-beta.0",
+    "@commitlint/cli": "18.4.0",
+    "@ls-lint/ls-lint": "2.2.2",
     "husky": "8.0.3",
     "is-ci": "3.0.1",
-    "lint-staged": "14.0.1",
-    "prettier": "3.0.2",
+    "lint-staged": "15.0.2",
+    "prettier": "3.0.3",
     "prettier-config-escapace": "1.0.6"
   },
   "private": true,
   "scripts": {
     "docs": "terraform-docs . && prettier --write README.md",
-    "init": "terraform init -backend=false && tflint --init && (is-ci || husky install)",
+    "init": "terraform init -backend=false -upgrade && tflint --init && (is-ci || husky install)",
     "lint": "ls-lint && terraform fmt && tflint --chdir . && tfsec .",
     "lint-staged": "lint-staged",
     "prepare": "is-ci || husky install",
