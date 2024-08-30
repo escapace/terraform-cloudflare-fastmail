@@ -14,7 +14,7 @@ resource "cloudflare_record" "mx_record10" {
   name     = var.domain
   type     = "MX"
   ttl      = 300
-  value    = "in1-smtp.messagingengine.com"
+  content  = "in1-smtp.messagingengine.com"
   priority = 10
 
   lifecycle {
@@ -28,7 +28,7 @@ resource "cloudflare_record" "mx_record20" {
   name     = var.domain
   type     = "MX"
   ttl      = 300
-  value    = "in2-smtp.messagingengine.com"
+  content  = "in2-smtp.messagingengine.com"
   priority = 20
 
   lifecycle {
@@ -42,7 +42,7 @@ resource "cloudflare_record" "spf_txt" {
   name    = var.domain
   type    = "TXT"
   ttl     = 300
-  value   = "v=spf1 ${join(" ", var.spf_include)} ?all"
+  content = "v=spf1 ${join(" ", var.spf_include)} ?all"
 
   lifecycle {
     create_before_destroy = true
@@ -55,7 +55,7 @@ resource "cloudflare_record" "spf_txt" {
 #   name    = var.domain
 #   type    = "SPF"
 #   ttl     = 300
-#   value   = "v=spf1 ${join(" ", var.spf_include)} ?all"
+#   content = "v=spf1 ${join(" ", var.spf_include)} ?all"
 #
 #   lifecycle {
 #     create_before_destroy = true
@@ -68,7 +68,7 @@ resource "cloudflare_record" "fm1_domainkey" {
   name    = "fm1._domainkey"
   type    = "CNAME"
   ttl     = 300
-  value   = "fm1.${var.domain}.dkim.fmhosted.com"
+  content = "fm1.${var.domain}.dkim.fmhosted.com"
 
   lifecycle {
     create_before_destroy = true
@@ -81,7 +81,7 @@ resource "cloudflare_record" "fm2_domainkey" {
   name    = "fm2._domainkey"
   type    = "CNAME"
   ttl     = 300
-  value   = "fm2.${var.domain}.dkim.fmhosted.com"
+  content = "fm2.${var.domain}.dkim.fmhosted.com"
 
   lifecycle {
     create_before_destroy = true
@@ -94,7 +94,7 @@ resource "cloudflare_record" "fm3_domainkey" {
   name    = "fm3._domainkey"
   type    = "CNAME"
   ttl     = 300
-  value   = "fm3.${var.domain}.dkim.fmhosted.com"
+  content = "fm3.${var.domain}.dkim.fmhosted.com"
 
   lifecycle {
     create_before_destroy = true
@@ -104,14 +104,11 @@ resource "cloudflare_record" "fm3_domainkey" {
 resource "cloudflare_record" "caldav" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
-  name    = var.domain
+  name    = "_caldav._tcp"
   type    = "SRV"
   ttl     = 300
 
   data {
-    name     = "terraform-caldav.${var.domain}"
-    proto    = "_tcp"
-    service  = "_caldav"
     priority = 0
     weight   = 0
     port     = 0
@@ -126,14 +123,11 @@ resource "cloudflare_record" "caldav" {
 resource "cloudflare_record" "caldavs" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
-  name    = var.domain
+  name    = "_caldavs._tcp"
   type    = "SRV"
   ttl     = 300
 
   data {
-    name     = "terraform-caldavs.${var.domain}"
-    proto    = "_tcp"
-    service  = "_caldavs"
     priority = 0
     weight   = 1
     port     = 443
@@ -148,14 +142,11 @@ resource "cloudflare_record" "caldavs" {
 resource "cloudflare_record" "carddav" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
-  name    = var.domain
+  name    = "_carddav._tcp"
   type    = "SRV"
   ttl     = 300
 
   data {
-    name     = "terraform-carddav.${var.domain}"
-    proto    = "_tcp"
-    service  = "_carddav"
     priority = 0
     weight   = 0
     port     = 0
@@ -170,14 +161,11 @@ resource "cloudflare_record" "carddav" {
 resource "cloudflare_record" "carddavs" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
-  name    = var.domain
+  name    = "_carddavs._tcp"
   type    = "SRV"
   ttl     = 300
 
   data {
-    name     = "terraform-carddavs.${var.domain}"
-    proto    = "_tcp"
-    service  = "_carddavs"
     priority = 0
     weight   = 1
     port     = 443
@@ -192,14 +180,11 @@ resource "cloudflare_record" "carddavs" {
 resource "cloudflare_record" "imap" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
-  name    = var.domain
+  name    = "_imap._tcp"
   type    = "SRV"
   ttl     = 300
 
   data {
-    name     = "terraform-imap.${var.domain}"
-    proto    = "_tcp"
-    service  = "_imap"
     priority = 0
     weight   = 0
     port     = 0
@@ -214,14 +199,11 @@ resource "cloudflare_record" "imap" {
 resource "cloudflare_record" "imaps" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
-  name    = var.domain
+  name    = "_imaps._tcp"
   type    = "SRV"
   ttl     = 300
 
   data {
-    name     = "terraform-imaps.${var.domain}"
-    proto    = "_tcp"
-    service  = "_imaps"
     priority = 0
     weight   = 1
     port     = 993
@@ -236,14 +218,11 @@ resource "cloudflare_record" "imaps" {
 resource "cloudflare_record" "pop3" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
-  name    = var.domain
+  name    = "_pop3._tcp"
   type    = "SRV"
   ttl     = 300
 
   data {
-    name     = "terraform-pop.${var.domain}"
-    proto    = "_tcp"
-    service  = "_pop3"
     priority = 0
     weight   = 0
     port     = 0
@@ -258,14 +237,11 @@ resource "cloudflare_record" "pop3" {
 resource "cloudflare_record" "pop3s" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
-  name    = var.domain
+  name    = "_pop3s._tcp"
   type    = "SRV"
   ttl     = 300
 
   data {
-    name     = "terraform-pops.${var.domain}"
-    proto    = "_tcp"
-    service  = "_pop3s"
     priority = 10
     weight   = 1
     port     = 995
@@ -280,14 +256,11 @@ resource "cloudflare_record" "pop3s" {
 resource "cloudflare_record" "jmap" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
-  name    = var.domain
+  name    = "_jmap._tcp"
   type    = "SRV"
   ttl     = 300
 
   data {
-    name     = "terraform-jmap.${var.domain}"
-    proto    = "_tcp"
-    service  = "_jmap"
     priority = 0
     weight   = 1
     port     = 443
@@ -302,14 +275,11 @@ resource "cloudflare_record" "jmap" {
 resource "cloudflare_record" "submission" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
-  name    = var.domain
+  name    = "_submission._tcp"
   type    = "SRV"
   ttl     = 300
 
   data {
-    name     = "terraform-submission.${var.domain}"
-    proto    = "_tcp"
-    service  = "_submission"
     priority = 0
     weight   = 1
     port     = 587
