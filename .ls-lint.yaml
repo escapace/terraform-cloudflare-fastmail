@@ -1,0 +1,18 @@
+ls:
+  .auto.tfvars: kebab-case
+  .hcl: kebab-case
+  .tf.json: kebab-case
+  .tf: kebab-case
+  .tfstate: kebab-case
+  .tftest.hcl: kebab-case
+  .tfvars.json: kebab-case
+  .tfvars: kebab-case
+
+ignore:
+  - .git
+  - .github
+  - .ls-lint.yaml
+  - .terraform
+  - .terraform.lock.hcl
+  - .tflint.hcl
+  - node_modules

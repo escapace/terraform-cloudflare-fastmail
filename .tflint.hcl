@@ -1,20 +1,27 @@
+plugin "terraform" {
+  enabled = true
+  preset = "recommended"
+}
+
 plugin "aws" {
   enabled = true
-  version = "0.26.0"
+  version = "0.34.0"
   source  = "github.com/terraform-linters/tflint-ruleset-aws"
 }
 
 config {
-  module = true
+  call_module_type = "local"
   force  = false
 }
 
 rule "terraform_required_providers" {
-  enabled = false
+  enabled = true
+  source = true
+  version = true
 }
 
 rule "terraform_required_version" {
-  enabled = false
+  enabled = true
 }
 
 rule "terraform_naming_convention" {
@@ -55,5 +62,9 @@ rule "terraform_module_pinned_source" {
 }
 
 rule "terraform_workspace_remote" {
+  enabled = true
+}
+
+rule "terraform_unused_required_providers" {
   enabled = true
 }

@@ -1,8 +1,0 @@
-#!/usr/bin/env bash
-. "$(dirname "$0")/_/husky.sh"
-
-set -e
-set -u
-set -o pipefail
-
-pnpm exec commitlint --edit "$1"

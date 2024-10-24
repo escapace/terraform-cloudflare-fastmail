@@ -1,23 +1,43 @@
 {
-  "name": "@terraform/cloudflare-fastmail",
+  "name": "terraform-cloudflare-fastmail",
   "version": "0.0.0",
-  "devDependencies": {
-    "@commitlint/cli": "18.4.0",
-    "@ls-lint/ls-lint": "2.2.2",
-    "husky": "8.0.3",
-    "is-ci": "3.0.1",
-    "lint-staged": "15.0.2",
-    "prettier": "3.0.3",
-    "prettier-config-escapace": "1.0.6"
+  "author": {
+    "name": "escapace",
+    "email": "opensource@escapace.com"
   },
+  "bugs": "https://github.com/escapace/terraform-cloudflare-fastmail/issues",
+  "devDependencies": {
+    "@commitlint/cli": "19.5.0",
+    "@commitlint/config-conventional": "19.5.0",
+    "@ls-lint/ls-lint": "2.2.3",
+    "eslint": "9.13.0",
+    "eslint-config-escapace": "5.2.3",
+    "lefthook": "1.8.1",
+    "prettier": "3.3.3",
+    "prettier-config-escapace": "1.2.1",
+    "syncpack": "13.0.0"
+  },
+  "engines": {
+    "pnpm": ">=9.11.0",
+    "terraform": ">=1.9.8",
+    "tflint": ">=0.53.0",
+    "trivy": ">=0.56.2"
+  },
+  "homepage": "https://github.com/escapace/terraform-cloudflare-fastmail#readme",
+  "license": "Apache-2.0",
   "private": true,
+  "repository": "escapace/terraform-cloudflare-fastmail",
   "scripts": {
     "docs": "terraform-docs . && prettier --write README.md",
-    "init": "terraform init -backend=false -upgrade && tflint --init && (is-ci || husky install)",
-    "lint": "ls-lint && terraform fmt && tflint --chdir . && tfsec .",
-    "lint-staged": "lint-staged",
-    "prepare": "is-ci || husky install",
+    "format": "syncpack format && eslint --no-warn-ignored --fix && prettier -uw . && terraform fmt",
+    "lint": "pnpm run ls-lint && eslint && pnpm run tflint && pnpm run trivy",
+    "ls-lint": "ls-lint --config .ls-lint.yaml",
+    "prepare": "lefthook install && terraform init -backend=false -upgrade && tflint --init",
+    "syncpack": "syncpack fix-mismatches && syncpack set-semver-ranges && syncpack format",
+    "tflint": "tflint --chdir .",
+    "trivy": "trivy fs --scanners misconfig --skip-dirs '.terraform/**' .",
     "typecheck": "terraform validate"
   },
+  "sideEffects": false,
   "type": "module"
 }
