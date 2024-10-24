@@ -32,10 +32,11 @@ jobs:
       - context
     uses: escapace/workflows/.github/workflows/ci-terraform-module.yaml@trunk
     with:
+      ref: ${{ needs.context.outputs.ref }}
+      version: ${{ needs.context.outputs.version }}
+
       node-version: ${{ needs.context.outputs.node-version }}
       pnpm-version: ${{ needs.context.outputs.pnpm-version }}
-      ref: ${{ needs.context.outputs.ref }}
       terraform-version: ${{ needs.context.outputs.terraform-version }}
       tflint-version: ${{ needs.context.outputs.tflint-version }}
       trivy-version: ${{ needs.context.outputs.trivy-version }}
-      version: ${{ needs.context.outputs.version }}
