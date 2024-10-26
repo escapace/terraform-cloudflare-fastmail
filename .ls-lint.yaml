@@ -1,12 +1,12 @@
 ls:
   .auto.tfvars: kebab-case
   .hcl: kebab-case
-  .tf.json: kebab-case
   .tf: kebab-case
+  .tf.json: kebab-case
   .tfstate: kebab-case
   .tftest.hcl: kebab-case
-  .tfvars.json: kebab-case
   .tfvars: kebab-case
+  .tfvars.json: kebab-case
 
 ignore:
   - .git
@@ -15,4 +15,5 @@ ignore:
   - .terraform
   - .terraform.lock.hcl
   - .tflint.hcl
+  - examples
   - node_modules

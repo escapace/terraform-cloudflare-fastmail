@@ -42,7 +42,7 @@ pre-commit:
       stage_fixed: true
 
     prettier:
-      exclude: '(^|/)(pnpm-lock\.yaml)$'
+      exclude: '(^|/)(pnpm-lock\.yaml|README.md)$'
       glob: '*.{js,mjs,cjs,ts,mts,cts,yml,yaml,json,md}'
       priority: 5
       run: pnpm exec prettier --write {staged_files}

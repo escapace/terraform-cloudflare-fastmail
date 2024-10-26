@@ -32,10 +32,11 @@
     "format": "syncpack format && eslint --no-warn-ignored --fix && prettier -uw . && terraform fmt",
     "lint": "pnpm run ls-lint && eslint && pnpm run tflint && pnpm run trivy",
     "ls-lint": "ls-lint --config .ls-lint.yaml",
+    "pack": "pnpm-pack workspace --no-build --pack-destination lib/context.tgz",
     "prepare": "lefthook install && terraform init -backend=false -upgrade && tflint --init",
     "syncpack": "syncpack fix-mismatches && syncpack set-semver-ranges && syncpack format",
-    "tflint": "tflint --chdir .",
-    "trivy": "trivy fs --scanners misconfig --skip-dirs '.terraform/**' .",
+    "tflint": "tflint --recursive --chdir .",
+    "trivy": "trivy fs --scanners misconfig --include-dev-deps --skip-dirs '.terraform/**' --skip-dirs 'examples' .",
     "typecheck": "terraform validate"
   },
   "sideEffects": false,
