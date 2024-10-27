@@ -29,7 +29,7 @@
   "repository": "escapace/terraform-cloudflare-fastmail",
   "scripts": {
     "docs": "terraform-docs . && prettier --write README.md",
-    "format": "syncpack format && eslint --no-warn-ignored --fix && prettier -uw . && terraform fmt",
+    "format": "syncpack format && eslint --no-warn-ignored --fix && prettier -uw . && terraform fmt -recursive",
     "lint": "pnpm run ls-lint && eslint && pnpm run tflint && pnpm run trivy",
     "ls-lint": "ls-lint --config .ls-lint.yaml",
     "pack": "pnpm-pack workspace --no-build --pack-destination lib/context.tgz",

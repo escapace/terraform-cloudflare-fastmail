@@ -31,7 +31,7 @@ pre-commit:
     pnpm-install:
       glob: '{package.json,**/package.json,pnpm-lock.yaml,*.tf,*.tf.json,*.tfvars,*.tfvars.json}'
       priority: 3
-      run: pnpm install
+      run: pnpm install --ignore-scripts && terraform init -backend=false --lockfile=readonly && tflint --init
       stage_fixed: true
 
     eslint:
@@ -54,20 +54,26 @@ pre-commit:
       run: pnpm run typecheck
       stage_fixed: true
 
+    format:
+      glob: '*.{tf,tftest.hcl,tfvars}'
+      priority: 7
+      run: terraform fmt {staged_files}
+      stage_fixed: true
+
     tflint:
       glob: '*.{tf,tf.json,tfvars,tfvars.json}'
-      priority: 7
+      priority: 8
       run: pnpm run tflint
       stage_fixed: true
 
     trivy:
       glob: '*.{tf,tf.json,tfvars,tfvars.json}'
-      priority: 7
+      priority: 8
       run: pnpm run trivy
       stage_fixed: true
 
     docs:
       glob: '{README.md,*.tf,*.tf.json,*.tfvars,*.tfvars.json}'
-      priority: 8
+      priority: 9
       run: pnpm run docs
       stage_fixed: true
