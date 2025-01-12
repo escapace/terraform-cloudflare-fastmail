@@ -118,6 +118,9 @@ resource "cloudflare_record" "caldav" {
 
   lifecycle {
     create_before_destroy = true
+    ignore_changes = [
+      data["name"]
+    ]
   }
 }
 
@@ -138,6 +141,9 @@ resource "cloudflare_record" "caldavs" {
 
   lifecycle {
     create_before_destroy = true
+    ignore_changes = [
+      data["name"]
+    ]
   }
 }
 
@@ -158,6 +164,9 @@ resource "cloudflare_record" "carddav" {
 
   lifecycle {
     create_before_destroy = true
+    ignore_changes = [
+      data["name"]
+    ]
   }
 }
 
@@ -178,6 +187,9 @@ resource "cloudflare_record" "carddavs" {
 
   lifecycle {
     create_before_destroy = true
+    ignore_changes = [
+      data["name"]
+    ]
   }
 }
 
@@ -198,6 +210,9 @@ resource "cloudflare_record" "imap" {
 
   lifecycle {
     create_before_destroy = true
+    ignore_changes = [
+      data["name"]
+    ]
   }
 }
 
@@ -218,6 +233,9 @@ resource "cloudflare_record" "imaps" {
 
   lifecycle {
     create_before_destroy = true
+    ignore_changes = [
+      data["name"]
+    ]
   }
 }
 
@@ -238,6 +256,9 @@ resource "cloudflare_record" "pop3" {
 
   lifecycle {
     create_before_destroy = true
+    ignore_changes = [
+      data["name"]
+    ]
   }
 }
 
@@ -258,6 +279,9 @@ resource "cloudflare_record" "pop3s" {
 
   lifecycle {
     create_before_destroy = true
+    ignore_changes = [
+      data["name"]
+    ]
   }
 }
 
@@ -278,6 +302,9 @@ resource "cloudflare_record" "jmap" {
 
   lifecycle {
     create_before_destroy = true
+    ignore_changes = [
+      data["name"]
+    ]
   }
 }
 
@@ -298,6 +325,9 @@ resource "cloudflare_record" "submission" {
 
   lifecycle {
     create_before_destroy = true
+    ignore_changes = [
+      data["name"]
+    ]
   }
 }
 

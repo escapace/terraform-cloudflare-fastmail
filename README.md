@@ -1,5 +1,19 @@
 <!-- BEGIN_TF_DOCS -->
 
+## Inputs
+
+| Name        | Description                    | Type           | Default                                 | Required |
+| ----------- | ------------------------------ | -------------- | --------------------------------------- | :------: |
+| domain      | Domain name to lookup zone id  | `string`       | n/a                                     |   yes    |
+| enabled     | Whether this module is enabled | `bool`         | `true`                                  |    no    |
+| spf_include | SPF record list                | `list(string)` | `[ "include:spf.messagingengine.com" ]` |    no    |
+
+## Outputs
+
+| Name    | Description        |
+| ------- | ------------------ |
+| zone_id | Cloudflare Zone Id |
+
 ## Resources
 
 | Name                                                                                                                          | Type        |
@@ -22,18 +36,11 @@
 | [cloudflare_record.submission](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/resources/record)    | resource    |
 | [cloudflare_zones.default](https://registry.terraform.io/providers/cloudflare/cloudflare/latest/docs/data-sources/zones)      | data source |
 
-## Inputs
+## Requirements
 
-| Name        | Description                    | Type           | Default                                 | Required |
-| ----------- | ------------------------------ | -------------- | --------------------------------------- | :------: |
-| domain      | Domain name to lookup zone id  | `string`       | n/a                                     |   yes    |
-| enabled     | Whether this module is enabled | `bool`         | `true`                                  |    no    |
-| spf_include | SPF record list                | `list(string)` | `[ "include:spf.messagingengine.com" ]` |    no    |
-
-## Outputs
-
-| Name    | Description        |
-| ------- | ------------------ |
-| zone_id | Cloudflare Zone Id |
+| Name       | Version  |
+| ---------- | -------- |
+| terraform  | >=1.9.8  |
+| cloudflare | >=4.44.0 |
 
 <!-- END_TF_DOCS -->
