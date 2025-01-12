@@ -109,6 +109,7 @@ resource "cloudflare_record" "caldav" {
   ttl     = 300
 
   data {
+    name     = "_caldav._tcp.${var.domain}"
     priority = 0
     weight   = 0
     port     = 0
@@ -128,6 +129,7 @@ resource "cloudflare_record" "caldavs" {
   ttl     = 300
 
   data {
+    name     = "_caldavs._tcp.${var.domain}"
     priority = 0
     weight   = 1
     port     = 443
@@ -147,6 +149,7 @@ resource "cloudflare_record" "carddav" {
   ttl     = 300
 
   data {
+    name     = "_carddav._tcp.${var.domain}"
     priority = 0
     weight   = 0
     port     = 0
@@ -166,6 +169,7 @@ resource "cloudflare_record" "carddavs" {
   ttl     = 300
 
   data {
+    name     = "_carddavs._tcp.${var.domain}"
     priority = 0
     weight   = 1
     port     = 443
@@ -185,6 +189,7 @@ resource "cloudflare_record" "imap" {
   ttl     = 300
 
   data {
+    name     = "_imap._tcp.${var.domain}"
     priority = 0
     weight   = 0
     port     = 0
@@ -204,6 +209,7 @@ resource "cloudflare_record" "imaps" {
   ttl     = 300
 
   data {
+    name     = "_imaps._tcp.${var.domain}"
     priority = 0
     weight   = 1
     port     = 993
@@ -223,6 +229,7 @@ resource "cloudflare_record" "pop3" {
   ttl     = 300
 
   data {
+    name     = "_pop3._tcp.${var.domain}"
     priority = 0
     weight   = 0
     port     = 0
@@ -242,6 +249,7 @@ resource "cloudflare_record" "pop3s" {
   ttl     = 300
 
   data {
+    name     = "_pop3s._tcp.${var.domain}"
     priority = 10
     weight   = 1
     port     = 995
@@ -261,6 +269,7 @@ resource "cloudflare_record" "jmap" {
   ttl     = 300
 
   data {
+    name     = "_jmap._tcp.${var.domain}"
     priority = 0
     weight   = 1
     port     = 443
@@ -280,6 +289,7 @@ resource "cloudflare_record" "submission" {
   ttl     = 300
 
   data {
+    name     = "_submission._tcp.${var.domain}"
     priority = 0
     weight   = 1
     port     = 587
