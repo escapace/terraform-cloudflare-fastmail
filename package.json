@@ -7,24 +7,29 @@
   },
   "bugs": "https://github.com/escapace/terraform-cloudflare-fastmail/issues",
   "devDependencies": {
-    "@commitlint/cli": "19.6.0",
-    "@commitlint/config-conventional": "19.6.0",
+    "@commitlint/cli": "19.7.1",
+    "@commitlint/config-conventional": "19.7.1",
     "@ls-lint/ls-lint": "2.2.3",
-    "eslint": "9.17.0",
-    "eslint-config-escapace": "5.4.1",
-    "lefthook": "1.9.2",
-    "prettier": "3.4.2",
+    "eslint": "9.20.1",
+    "eslint-config-escapace": "5.4.6",
+    "lefthook": "1.10.10",
+    "prettier": "3.5.1",
     "prettier-config-escapace": "1.2.1",
-    "syncpack": "13.0.0"
+    "syncpack": "13.0.2"
   },
   "engines": {
-    "pnpm": ">=9.14.4",
+    "pnpm": ">=10.4.1",
     "terraform": ">=1.9.8",
     "tflint": ">=0.53.0",
     "trivy": ">=0.56.2"
   },
   "homepage": "https://github.com/escapace/terraform-cloudflare-fastmail#readme",
   "license": "Apache-2.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "lefthook"
+    ]
+  },
   "private": true,
   "repository": "escapace/terraform-cloudflare-fastmail",
   "scripts": {
