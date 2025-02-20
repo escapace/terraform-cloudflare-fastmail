@@ -1,14 +1,12 @@
 data "cloudflare_zones" "default" {
-  filter {
-    name = var.domain
-  }
+  name = var.domain
 }
 
 locals {
-  zone_id = data.cloudflare_zones.default.zones[0]["id"]
+  zone_id = data.cloudflare_zones.default.result[0]["id"]
 }
 
-resource "cloudflare_record" "mx_record10" {
+resource "cloudflare_dns_record" "mx_record10" {
   count    = var.enabled ? 1 : 0
   zone_id  = local.zone_id
   name     = var.domain
@@ -22,7 +20,7 @@ resource "cloudflare_record" "mx_record10" {
   }
 }
 
-resource "cloudflare_record" "mx_record20" {
+resource "cloudflare_dns_record" "mx_record20" {
   count    = var.enabled ? 1 : 0
   zone_id  = local.zone_id
   name     = var.domain
@@ -36,7 +34,7 @@ resource "cloudflare_record" "mx_record20" {
   }
 }
 
-resource "cloudflare_record" "spf_txt" {
+resource "cloudflare_dns_record" "spf_txt" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = var.domain
@@ -62,7 +60,7 @@ resource "cloudflare_record" "spf_txt" {
 #   }
 # }
 
-resource "cloudflare_record" "fm1_domainkey" {
+resource "cloudflare_dns_record" "fm1_domainkey" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = "fm1._domainkey"
@@ -75,7 +73,7 @@ resource "cloudflare_record" "fm1_domainkey" {
   }
 }
 
-resource "cloudflare_record" "fm2_domainkey" {
+resource "cloudflare_dns_record" "fm2_domainkey" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = "fm2._domainkey"
@@ -88,7 +86,7 @@ resource "cloudflare_record" "fm2_domainkey" {
   }
 }
 
-resource "cloudflare_record" "fm3_domainkey" {
+resource "cloudflare_dns_record" "fm3_domainkey" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = "fm3._domainkey"
@@ -101,14 +99,14 @@ resource "cloudflare_record" "fm3_domainkey" {
   }
 }
 
-resource "cloudflare_record" "caldav" {
+resource "cloudflare_dns_record" "caldav" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = "_caldav._tcp"
   type    = "SRV"
   ttl     = 300
 
-  data {
+  data = {
     name     = "_caldav._tcp.${var.domain}"
     priority = 0
     weight   = 0
@@ -124,14 +122,14 @@ resource "cloudflare_record" "caldav" {
   }
 }
 
-resource "cloudflare_record" "caldavs" {
+resource "cloudflare_dns_record" "caldavs" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = "_caldavs._tcp"
   type    = "SRV"
   ttl     = 300
 
-  data {
+  data = {
     name     = "_caldavs._tcp.${var.domain}"
     priority = 0
     weight   = 1
@@ -147,14 +145,14 @@ resource "cloudflare_record" "caldavs" {
   }
 }
 
-resource "cloudflare_record" "carddav" {
+resource "cloudflare_dns_record" "carddav" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = "_carddav._tcp"
   type    = "SRV"
   ttl     = 300
 
-  data {
+  data = {
     name     = "_carddav._tcp.${var.domain}"
     priority = 0
     weight   = 0
@@ -170,14 +168,14 @@ resource "cloudflare_record" "carddav" {
   }
 }
 
-resource "cloudflare_record" "carddavs" {
+resource "cloudflare_dns_record" "carddavs" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = "_carddavs._tcp"
   type    = "SRV"
   ttl     = 300
 
-  data {
+  data = {
     name     = "_carddavs._tcp.${var.domain}"
     priority = 0
     weight   = 1
@@ -193,14 +191,14 @@ resource "cloudflare_record" "carddavs" {
   }
 }
 
-resource "cloudflare_record" "imap" {
+resource "cloudflare_dns_record" "imap" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = "_imap._tcp"
   type    = "SRV"
   ttl     = 300
 
-  data {
+  data = {
     name     = "_imap._tcp.${var.domain}"
     priority = 0
     weight   = 0
@@ -216,14 +214,14 @@ resource "cloudflare_record" "imap" {
   }
 }
 
-resource "cloudflare_record" "imaps" {
+resource "cloudflare_dns_record" "imaps" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = "_imaps._tcp"
   type    = "SRV"
   ttl     = 300
 
-  data {
+  data = {
     name     = "_imaps._tcp.${var.domain}"
     priority = 0
     weight   = 1
@@ -239,14 +237,14 @@ resource "cloudflare_record" "imaps" {
   }
 }
 
-resource "cloudflare_record" "pop3" {
+resource "cloudflare_dns_record" "pop3" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = "_pop3._tcp"
   type    = "SRV"
   ttl     = 300
 
-  data {
+  data = {
     name     = "_pop3._tcp.${var.domain}"
     priority = 0
     weight   = 0
@@ -262,14 +260,14 @@ resource "cloudflare_record" "pop3" {
   }
 }
 
-resource "cloudflare_record" "pop3s" {
+resource "cloudflare_dns_record" "pop3s" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = "_pop3s._tcp"
   type    = "SRV"
   ttl     = 300
 
-  data {
+  data = {
     name     = "_pop3s._tcp.${var.domain}"
     priority = 10
     weight   = 1
@@ -285,14 +283,14 @@ resource "cloudflare_record" "pop3s" {
   }
 }
 
-resource "cloudflare_record" "jmap" {
+resource "cloudflare_dns_record" "jmap" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = "_jmap._tcp"
   type    = "SRV"
   ttl     = 300
 
-  data {
+  data = {
     name     = "_jmap._tcp.${var.domain}"
     priority = 0
     weight   = 1
@@ -308,14 +306,14 @@ resource "cloudflare_record" "jmap" {
   }
 }
 
-resource "cloudflare_record" "submission" {
+resource "cloudflare_dns_record" "submission" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = "_submission._tcp"
   type    = "SRV"
   ttl     = 300
 
-  data {
+  data = {
     name     = "_submission._tcp.${var.domain}"
     priority = 0
     weight   = 1
