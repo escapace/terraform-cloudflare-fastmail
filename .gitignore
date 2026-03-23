@@ -1,4 +1,5 @@
 !.tfsec/config.yml
+.aider*
 .cache
 .cache/
 .docusaurus

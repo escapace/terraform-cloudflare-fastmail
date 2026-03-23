@@ -16,7 +16,6 @@ on:
 
 permissions:
   contents: read
-  packages: read
 
 env:
   # 7 GiB by default on GitHub, setting to 6 GiB
@@ -25,11 +24,19 @@ env:
 
 jobs:
   context:
+    permissions:
+      checks: read
+      contents: read
+      pull-requests: read
+      statuses: read
     uses: escapace/workflows/.github/workflows/context.yaml@trunk
 
-  ci:
+  continuous-integration:
     needs:
       - context
+    permissions:
+      contents: read
+      packages: read
     uses: escapace/workflows/.github/workflows/ci-terraform-module.yaml@trunk
     with:
       ref: ${{ needs.context.outputs.ref }}

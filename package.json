@@ -7,38 +7,34 @@
   },
   "bugs": "https://github.com/escapace/terraform-cloudflare-fastmail/issues",
   "devDependencies": {
-    "@commitlint/cli": "19.7.1",
-    "@commitlint/config-conventional": "19.7.1",
-    "@ls-lint/ls-lint": "2.2.3",
-    "eslint": "9.31.0",
-    "eslint-config-escapace": "5.8.0",
-    "lefthook": "1.10.10",
-    "prettier": "3.5.1",
-    "prettier-config-escapace": "1.2.1",
-    "syncpack": "13.0.2"
+    "@commitlint/cli": "20.5.0",
+    "@commitlint/config-conventional": "20.5.0",
+    "@escapace/syncpack-configuration": "0.1.0",
+    "@ls-lint/ls-lint": "2.3.1",
+    "eslint": "9.39.4",
+    "eslint-config-escapace": "5.14.0",
+    "lefthook": "2.1.4",
+    "prettier": "3.8.1",
+    "prettier-config-escapace": "1.2.2",
+    "syncpack": "14.2.0"
   },
   "engines": {
-    "pnpm": ">=10.4.1",
-    "terraform": ">=1.9.8",
-    "tflint": ">=0.53.0",
-    "trivy": ">=0.56.2"
+    "pnpm": ">=10.29.2",
+    "terraform": ">=1.14.0",
+    "tflint": ">=0.61.0",
+    "trivy": ">=0.69.3"
   },
   "homepage": "https://github.com/escapace/terraform-cloudflare-fastmail#readme",
   "license": "Apache-2.0",
-  "pnpm": {
-    "onlyBuiltDependencies": [
-      "lefthook"
-    ]
-  },
   "private": true,
   "repository": "escapace/terraform-cloudflare-fastmail",
   "scripts": {
-    "docs": "terraform-docs . && prettier --write README.md",
-    "format": "syncpack format && eslint --no-warn-ignored --fix && prettier -uw . && terraform fmt -recursive",
+    "docs": "terraform-docs . && prettier --no-error-on-unmatched-pattern --write README.md",
+    "format": "syncpack format && eslint --no-warn-ignored --fix && prettier --no-error-on-unmatched-pattern -uw . && terraform fmt -recursive",
     "lint": "pnpm run ls-lint && eslint && pnpm run tflint && pnpm run trivy",
     "ls-lint": "ls-lint --config .ls-lint.yaml",
     "prepare": "lefthook install && terraform init -backend=false -upgrade && tflint --init",
-    "syncpack": "syncpack fix-mismatches && syncpack set-semver-ranges && syncpack format",
+    "syncpack": "syncpack fix && syncpack format",
     "tflint": "tflint --recursive --chdir .",
     "trivy": "trivy fs --scanners misconfig --include-dev-deps --skip-dirs '.terraform/**' --skip-dirs 'examples' .",
     "typecheck": "terraform validate"
