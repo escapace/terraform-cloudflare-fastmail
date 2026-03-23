@@ -40,7 +40,7 @@
 
 | Name       | Version  |
 | ---------- | -------- |
-| terraform  | >=1.9.8  |
-| cloudflare | >=4.44.0 |
+| terraform  | >=1.14.0 |
+| cloudflare | >=5.18.0 |
 
 <!-- END_TF_DOCS -->
