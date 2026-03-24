@@ -116,9 +116,9 @@ resource "cloudflare_dns_record" "caldav" {
 
   lifecycle {
     create_before_destroy = true
-    # ignore_changes = [
-    #   data["name"]
-    # ]
+    ignore_changes = [
+      priority
+    ]
   }
 }
 
@@ -139,9 +139,9 @@ resource "cloudflare_dns_record" "caldavs" {
 
   lifecycle {
     create_before_destroy = true
-    # ignore_changes = [
-    #   data["name"]
-    # ]
+    ignore_changes = [
+      priority
+    ]
   }
 }
 
@@ -162,9 +162,9 @@ resource "cloudflare_dns_record" "carddav" {
 
   lifecycle {
     create_before_destroy = true
-    # ignore_changes = [
-    #   data["name"]
-    # ]
+    ignore_changes = [
+      priority
+    ]
   }
 }
 
@@ -185,9 +185,9 @@ resource "cloudflare_dns_record" "carddavs" {
 
   lifecycle {
     create_before_destroy = true
-    # ignore_changes = [
-    #   data["name"]
-    # ]
+    ignore_changes = [
+      priority
+    ]
   }
 }
 
@@ -208,9 +208,9 @@ resource "cloudflare_dns_record" "imap" {
 
   lifecycle {
     create_before_destroy = true
-    # ignore_changes = [
-    #   data["name"]
-    # ]
+    ignore_changes = [
+      priority
+    ]
   }
 }
 
@@ -231,9 +231,9 @@ resource "cloudflare_dns_record" "imaps" {
 
   lifecycle {
     create_before_destroy = true
-    # ignore_changes = [
-    #   data["name"]
-    # ]
+    ignore_changes = [
+      priority
+    ]
   }
 }
 
@@ -254,9 +254,9 @@ resource "cloudflare_dns_record" "pop3" {
 
   lifecycle {
     create_before_destroy = true
-    # ignore_changes = [
-    #   data["name"]
-    # ]
+    ignore_changes = [
+      priority
+    ]
   }
 }
 
@@ -277,9 +277,9 @@ resource "cloudflare_dns_record" "pop3s" {
 
   lifecycle {
     create_before_destroy = true
-    # ignore_changes = [
-    #   data["name"]
-    # ]
+    ignore_changes = [
+      priority
+    ]
   }
 }
 
@@ -300,9 +300,9 @@ resource "cloudflare_dns_record" "jmap" {
 
   lifecycle {
     create_before_destroy = true
-    # ignore_changes = [
-    #   data["name"]
-    # ]
+    ignore_changes = [
+      priority
+    ]
   }
 }
 
@@ -323,9 +323,9 @@ resource "cloudflare_dns_record" "submission" {
 
   lifecycle {
     create_before_destroy = true
-    # ignore_changes = [
-    #   data["name"]
-    # ]
+    ignore_changes = [
+      priority
+    ]
   }
 }
 
