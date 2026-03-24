@@ -48,7 +48,7 @@ resource "cloudflare_dns_record" "spf_txt" {
   name    = var.domain
   type    = "TXT"
   ttl     = 300
-  content = "v=spf1 ${join(" ", module.spf.value)} ?all"
+  content = module.spf.value
 
   lifecycle {
     create_before_destroy = true
