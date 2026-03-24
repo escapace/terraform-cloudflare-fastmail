@@ -1,3 +1,5 @@
+
+
 data "cloudflare_zones" "default" {
   name = var.domain
 }
@@ -34,13 +36,19 @@ resource "cloudflare_dns_record" "mx_record20" {
   }
 }
 
+module "spf" {
+  source  = "escapace/spf/null"
+  version = "0.1.0"
+  policy  = var.spf_policy
+}
+
 resource "cloudflare_dns_record" "spf_txt" {
   count   = var.enabled ? 1 : 0
   zone_id = local.zone_id
   name    = var.domain
   type    = "TXT"
   ttl     = 300
-  content = "v=spf1 ${join(" ", var.spf_include)} ?all"
+  content = "v=spf1 ${join(" ", module.spf.value)} ?all"
 
   lifecycle {
     create_before_destroy = true
