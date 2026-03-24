@@ -29,7 +29,7 @@ variable "spf_policy" {
   EOT
 
   type = object({
-    includes      = optional(list(string), ["include:spf.messagingengine.com"])
+    includes      = optional(list(string), ["spf.messagingengine.com"])
     ip4_cidrs     = optional(list(string), [])
     ip6_cidrs     = optional(list(string), [])
     include_a     = optional(bool, false)
